@@ -50,3 +50,11 @@
 - **预防**:
   - scope 名称先用 npm 网站或试发布验证可用性
   - 遇到 scope 审核/保留词限制时优先用无 scope 唯一包名恢复发布
+
+### 2026-03-09（npx 启动秒退）
+- **问题**: `claude mcp add ... -- npx -y @cory-ronghua/video-fetch-mcp` 后 MCP 无法连接
+- **根因**: 入口逻辑依赖 `isRunAsEntry()`，在 npm `.bin` 包装脚本场景下判定失败，进程直接退出
+- **解决方案**: 新增独立 MCP bin 入口 `src/mcp-bin.ts`，并将 `bin.video-fetch-mcp` 指向 `dist/mcp-bin.js`
+- **预防**:
+  - MCP 入口不要依赖 `import.meta.url === pathToFileURL(process.argv[1])`
+  - 每次改 bin 配置后用 `npm pack` + `npx <tarball>` 做本地启动验证

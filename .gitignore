@@ -39,3 +39,6 @@ packages/*/downloads/
 
 # Shell artifact
 packages/*/$!
+
+# Local npm pack artifacts
+packages/*/*.tgz

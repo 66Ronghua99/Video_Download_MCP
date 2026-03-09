@@ -27,6 +27,7 @@
 3. 补齐发布检查命令 `release:check`（`npm pack --dry-run`）。
 4. 新增 GitHub Actions（release published 触发）自动发布 npm。
 5. 更新 README/mcp.json，给出 `claude mcp add` 一键导入方式。
+6. 将 MCP 启动入口拆分为独立 bin 文件，确保 npm `.bin` 场景不秒退。
 
 ## Test Strategy
 - `npm run typecheck`

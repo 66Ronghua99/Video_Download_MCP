@@ -6,14 +6,13 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod';
-import { pathToFileURL } from 'url';
 import { resolveUrl } from './resolver/browser.js';
 import { downloadFromCandidate, downloadFile } from './downloader/index.js';
 
 function createMcpServer(): McpServer {
   const mcpServer = new McpServer({
     name: 'video-fetch-mcp',
-    version: '1.0.0',
+    version: '1.0.1',
   });
 
   (mcpServer as any).tool(
@@ -173,18 +172,4 @@ export async function startMcpServer(): Promise<void> {
   const transport = new StdioServerTransport();
   await mcpServer.connect(transport);
   console.error('video-fetch-mcp server running on stdio');
-}
-
-function isRunAsEntry(): boolean {
-  if (!process.argv[1]) {
-    return false;
-  }
-  return import.meta.url === pathToFileURL(process.argv[1]).href;
-}
-
-if (isRunAsEntry()) {
-  startMcpServer().catch((error) => {
-    console.error('MCP server failed to start:', error);
-    process.exit(1);
-  });
 }

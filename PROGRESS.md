@@ -50,6 +50,8 @@
 - 新增 GitHub Actions 发布流水线：`.github/workflows/publish-video-download-mcp.yml`
 - 发布流水线已切换为 npm Trusted Publishing（OIDC + provenance，无需 NPM_TOKEN）
 - 打包验证通过：`npm pack --dry-run`（使用临时 npm cache）
+- 修复 npx 启动秒退问题：新增独立 bin 入口 `src/mcp-bin.ts`
+- 发布版本提升到 `1.0.1`，用于修复后重新发布
 
 ## Reference List
 - Python版本: media_resolver/resolver/
