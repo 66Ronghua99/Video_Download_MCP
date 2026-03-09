@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "video-download-mcp": {
+      "command": "npx",
+      "args": ["-y", "video-download-mcp"]
+    }
+  }
+}

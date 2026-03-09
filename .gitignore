@@ -28,3 +28,14 @@ media_resolver/downloads/
 
 # Logs
 *.log
+
+# Node.js
+node_modules/
+packages/*/node_modules/
+
+# Generated downloads
+downloads/
+packages/*/downloads/
+
+# Shell artifact
+packages/*/$!
